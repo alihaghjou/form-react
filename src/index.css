@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    @apply h-screen bg-slate-800 text-slate-200 w-4/6 m-auto
+}
+
+input {
+    @apply bg-transparent border-b-2 border-slate-200 rounded p-2 overflow-hidden w-full
+}

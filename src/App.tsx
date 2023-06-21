@@ -26,7 +26,10 @@ function App() {
   }
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className="flex flex-col p-8 gap-6 w-full"
+    >
       <div>
         <label htmlFor="Email">Email Input:</label>
         <input
@@ -67,7 +70,14 @@ function App() {
           type="password"
         />
       </div>
-      <button type="submit">Submit</button>
+      <div className="flex items-center justify-center">
+        <button
+          className="py-4 px-6 border-2 rounded border-slate-200 hover:text-slate-800 hover:bg-slate-200"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 }
