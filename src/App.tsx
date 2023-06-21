@@ -1,22 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-const zod = z.object({
-  email: z.string().email({ message: "Enter a valid Email" }),
-  firstName: z
-    .string()
-    .min(2, { message: "Must contain at least 2 character" }),
-  lastName: z.string().min(2, { message: "Must contain at least 2 character" }),
-  password: z
-    .string()
-    .min(8, { message: "Must contain at least 8 character" })
-    .regex(/[a-z]/, { message: "Must Contain a Lowercase" })
-    .regex(/[A-Z]/, { message: "Must Contain an UpperCase" })
-    .regex(/[0-9]/, { message: "Must Contain a Number" }),
-});
-
-type FormData = z.infer<typeof zod>;
+import { zod, type FormData } from "./validation";
 
 function App() {
   const {
@@ -28,7 +12,14 @@ function App() {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    //send data to server
+    fetch("http://localhost:3000/User", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   return (
